@@ -3,6 +3,9 @@ package br.com.alura.agenda;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,14 +19,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ArrayList<String> alunos = new ArrayList<>(
-                Arrays.asList("Vitor", "Chiquinho", "Gavião"));
+        ArrayList<String> alunos = new ArrayList<>(
+                Arrays.asList("Vitor", "Chiquinho", "Gavião", "Daniel", "Indibrega", "Bob"));
 
-        TextView primeiroAluno = findViewById(R.id.textView);
-        TextView segundoAluno = findViewById(R.id.textView2);
-        TextView terceiroAluno = findViewById(R.id.textView3);
-        primeiroAluno.setText(alunos.get(0));
-        segundoAluno.setText(alunos.get(1));
-        terceiroAluno.setText(alunos.get(2));
+        ListView listaDeAlunos = findViewById(R.id.activity_main_lista_alunos);
+
+        //O arrayadapter já possui o ListAdapter configurado dentro dele
+        //Como esse projeto eh simples nao precisa
+
+        listaDeAlunos.setAdapter(new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                alunos));
+        //Ao usar android antes do R temos acesso aos layouts.
+        //Esse layout eh antigo e nao eh mais utilizado normalmente
     }
 }
