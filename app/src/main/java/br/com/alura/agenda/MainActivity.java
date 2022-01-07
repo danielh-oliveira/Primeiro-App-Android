@@ -9,16 +9,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setTitle("Lista de alunos");
         ArrayList<String> alunos = new ArrayList<>(
                 Arrays.asList("Vitor", "Chiquinho", "Gavião", "Daniel", "Indibrega", "Bob"));
 
