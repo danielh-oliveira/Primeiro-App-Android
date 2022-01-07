@@ -1,12 +1,8 @@
-package br.com.alura.agenda;
+package br.com.alura.agenda.ui.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,16 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+import br.com.alura.agenda.R;
+
+public class ListaAlunosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_lista_alunos);
         setTitle("Lista de alunos");
         ArrayList<String> alunos = new ArrayList<>(
                 Arrays.asList("Vitor", "Chiquinho", "Gavião", "Daniel", "Indibrega", "Bob"));
 
-        ListView listaDeAlunos = findViewById(R.id.activity_main_lista_alunos);
+        ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
 
         //O arrayadapter já possui o ListAdapter configurado dentro dele
         //Como esse projeto eh simples nao precisa
