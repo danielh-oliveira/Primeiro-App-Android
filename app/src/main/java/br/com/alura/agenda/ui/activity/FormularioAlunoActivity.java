@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import br.com.alura.agenda.model.Aluno;
 public class FormularioAlunoActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Cadastro aluno";
+    public static final String NOME_VAZIO_AVISO = "Nome não pode estar vazio";
     private EditText campoNome;
     private EditText campoTelefone;
     private EditText campoEmail;
@@ -34,10 +36,19 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         botaoSalvarFormulario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Aluno alunoCriado = criaAluno();
-                salva(alunoCriado);
+                if(vazio()) {
+                    Toast.makeText(FormularioAlunoActivity.this, NOME_VAZIO_AVISO, Toast.LENGTH_LONG).show();
+                } else {
+                    Aluno alunoCriado = criaAluno();
+                    salva(alunoCriado);
+                }
             }
         });
+    }
+
+    private boolean vazio() {
+        String nome = campoNome.getText().toString().replaceAll(" ", "");
+        return nome.isEmpty();
     }
 
     private void inicializacaoDosCampos() {
