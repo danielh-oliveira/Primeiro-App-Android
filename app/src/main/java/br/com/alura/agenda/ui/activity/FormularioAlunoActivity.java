@@ -2,6 +2,7 @@ package br.com.alura.agenda.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.alura.agenda.R;
+import br.com.alura.agenda.dao.alunoDAO;
 import br.com.alura.agenda.model.Aluno;
 
 public class FormularioAlunoActivity extends AppCompatActivity {
@@ -17,6 +19,9 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_aluno);
+        setTitle("Cadastro novo aluno");
+
+        alunoDAO dao = new alunoDAO();
 
 //        É importante fazer a busca das views fora do listener
 //        para que nao fique buscando as views em toda a acao.
@@ -34,12 +39,9 @@ public class FormularioAlunoActivity extends AppCompatActivity {
                 String email = campoEmail.getText().toString();
 
                 Aluno alunoCriado = new Aluno(nome, telefone, email);
-                Toast.makeText(
-                        FormularioAlunoActivity.this,
-                        alunoCriado.getNome() + " - "
-                                + alunoCriado.getTelefone() + " - "
-                                + alunoCriado.getEmail(),
-                        Toast.LENGTH_SHORT).show();
+                dao.salva(alunoCriado);
+
+                finish();
             }
         });
     }
