@@ -2,7 +2,9 @@ package br.com.alura.agenda.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -11,8 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 import br.com.alura.agenda.R;
 import br.com.alura.agenda.dao.alunoDAO;
+import br.com.alura.agenda.model.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
@@ -25,6 +30,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
         setTitle(TITULO_APPBAR);
         configuraFabNovoAluno();
+        dao.salva(new Aluno("Roberto", "1234556789", "robs@gmail.com"));
+        dao.salva(new Aluno("Cheila", "987654321", "cheilin@gmail.com"));
     }
 
     private void configuraFabNovoAluno() {
@@ -49,14 +56,21 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void configuraLista() {
         ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
-        //O arrayadapter já possui o ListAdapter configurado dentro dele
-        //Como esse projeto eh simples nao precisa
-
+        final List<Aluno> alunos = dao.todos();
         listaDeAlunos.setAdapter(new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                dao.todos()));
-        //Ao usar android antes do R temos acesso aos layouts.
-        //Esse layout eh antigo e nao eh mais utilizado normalmente
+                alunos));
+        listaDeAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //Se voce usar o SetOnClickListener o app quebra pq nao pode ser usado
+            //dentro de um ListView
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+                Aluno alunoEscolhido = alunos.get(posicao);
+                Intent vaiParaFormularioActivity = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
+                vaiParaFormularioActivity.putExtra("aluno", alunoEscolhido);
+                startActivity(vaiParaFormularioActivity);
+            }
+        });
     }
 }
