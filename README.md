@@ -21,6 +21,11 @@ Adicionei a edição das informações do aluno:
 
 ![Lista aluno deletar](https://media.giphy.com/media/8mWCfoTcFmYbcdm6SE/giphy.gif)
 
+Novo layout item aluno:
+
+![Novo layout item aluno](telaapp.png)
+
+
 ## Instalação
 
 Crie um projeto no Android Studio 2020.3.1, escolha nenhuma atividade. Por último sobrescreva os diretórios com os arquivos que estão aqui.
