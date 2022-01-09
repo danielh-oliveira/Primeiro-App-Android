@@ -17,7 +17,7 @@ public class ListaAlunosAdapter extends BaseAdapter {
 
 
     private final List<Aluno> alunos = new ArrayList<>();
-    private Context context;
+    private final Context context;
 
     public ListaAlunosAdapter(Context context) {
         this.context = context;
@@ -40,29 +40,35 @@ public class ListaAlunosAdapter extends BaseAdapter {
 
     @Override
     public View getView(int posicao, View view, ViewGroup viewGroup) {
-        View viewCriada = LayoutInflater
-                .from(context)
-                .inflate(R.layout.item_aluno, viewGroup, false);
-
+        View viewCriada = inflaView(viewGroup);
         Aluno aluno = alunos.get(posicao);
+        vincula(viewCriada, aluno);
+        return viewCriada;
+    }
+
+    private void vincula(View viewCriada, Aluno aluno) {
         TextView alunoNome = viewCriada.findViewById(R.id.item_aluno_nome);
         TextView alunoTelefone = viewCriada.findViewById(R.id.item_aluno_telefone);
 
         alunoNome.setText(aluno.getNome());
         alunoTelefone.setText(aluno.getTelefone());
+    }
 
-        return viewCriada;
+    private View inflaView(ViewGroup viewGroup) {
+        return LayoutInflater
+                .from(context)
+                .inflate(R.layout.item_aluno, viewGroup, false);
     }
 
     public void remove(Aluno aluno) {
         alunos.remove(aluno);
+        notifyDataSetChanged();
     }
 
-    public void clear() {
-        alunos.clear();
-    }
-
-    public void addAll(List<Aluno> alunos) {
+    public void atualiza(List<Aluno> alunos) {
+        this.alunos.clear();
         this.alunos.addAll(alunos);
+        notifyDataSetChanged();
     }
+
 }

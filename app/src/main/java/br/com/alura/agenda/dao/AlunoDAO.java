@@ -7,7 +7,7 @@ import java.util.List;
 
 import br.com.alura.agenda.model.Aluno;
 
-public class alunoDAO {
+public class AlunoDAO {
     private static int contadorDeIds = 1;
     private final static List<Aluno> alunos = new ArrayList<>();
 
