@@ -35,6 +35,51 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         carregaAluno();
     }
 
+    private void inicializacaoDosCampos() {
+        campoNome = findViewById(R.id.activity_formulario_aluno_nome);
+        campoTelefone = findViewById(R.id.activity_formulario_aluno_telefone);
+        campoEmail = findViewById(R.id.activity_formulario_aluno_email);
+    }
+
+    private void configuraBotaoSalvar() {
+        Button botaoSalvarFormulario = findViewById(R.id.activity_formulario_aluno_botao_enviar);
+        botaoSalvarFormulario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (nomeVazio()) {
+                    Toast.makeText(FormularioAlunoActivity.this, NOME_VAZIO_AVISO, Toast.LENGTH_LONG).show();
+                } else {
+                    finalizaFormulario();
+                }
+            }
+        });
+    }
+
+    private boolean nomeVazio() {
+        String nome = campoNome.getText().toString().replaceAll(" ", "");
+        return nome.isEmpty();
+    }
+
+    private void finalizaFormulario() {
+        preencheAluno();
+        if (aluno.temIdValido()) {
+            dao.edita(aluno);
+        } else {
+            dao.salva(aluno);
+        }
+        finish();
+    }
+
+    private void preencheAluno() {
+        String nome = campoNome.getText().toString();
+        String telefone = campoTelefone.getText().toString();
+        String email = campoEmail.getText().toString();
+
+        aluno.setNome(nome);
+        aluno.setTelefone(telefone);
+        aluno.setEmail(email);
+    }
+
     private void carregaAluno() {
         Intent dados = getIntent();
         if (dados.hasExtra(CHAVE_ALUNO)) {
@@ -49,48 +94,4 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         }
     }
 
-    private void configuraBotaoSalvar() {
-        Button botaoSalvarFormulario = findViewById(R.id.activity_formulario_aluno_botao_enviar);
-        botaoSalvarFormulario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(nomeVazio()) {
-                    Toast.makeText(FormularioAlunoActivity.this, NOME_VAZIO_AVISO, Toast.LENGTH_LONG).show();
-                } else {
-                    finalizaFormulario();
-                }
-            }
-        });
-    }
-
-    private void finalizaFormulario() {
-        preencheAluno();
-        if(aluno.temIdValido()){
-            dao.edita(aluno);
-        } else {
-            dao.salva(aluno);
-        }
-        finish();
-    }
-
-    private boolean nomeVazio() {
-        String nome = campoNome.getText().toString().replaceAll(" ", "");
-        return nome.isEmpty();
-    }
-
-    private void inicializacaoDosCampos() {
-        campoNome = findViewById(R.id.activity_formulario_aluno_nome);
-        campoTelefone = findViewById(R.id.activity_formulario_aluno_telefone);
-        campoEmail = findViewById(R.id.activity_formulario_aluno_email);
-    }
-
-    private void preencheAluno() {
-        String nome = campoNome.getText().toString();
-        String telefone = campoTelefone.getText().toString();
-        String email = campoEmail.getText().toString();
-
-        aluno.setNome(nome);
-        aluno.setTelefone(telefone);
-        aluno.setEmail(email);
-    }
 }
