@@ -3,5 +3,5 @@
 
     <item
         android:id="@+id/activity_lista_menu_remover"
-        android:title="Remover" />
+        android:title="@string/remover" />
 </menu>

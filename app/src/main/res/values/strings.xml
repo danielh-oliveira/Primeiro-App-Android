@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="nome">Nome</string>
+    <string name="telefone">Telefone</string>
+    <string name="email">E-mail</string>
+    <string name="salvar">Salvar</string>
+    <string name="remover">Remover</string>
+    <string name="bot_o_para_abrir_formulario_de_cadastro_de_aluno">Botão para abrir formulario de cadastro de aluno</string>
+</resources>
