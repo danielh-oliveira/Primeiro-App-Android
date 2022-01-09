@@ -5,10 +5,13 @@ import static br.com.alura.agenda.ui.activity.ConstantActivities.CHAVE_ALUNO;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -17,15 +20,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.alura.agenda.R;
 import br.com.alura.agenda.dao.alunoDAO;
 import br.com.alura.agenda.model.Aluno;
+import br.com.alura.agenda.ui.adapter.ListaAlunosAdapter;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Lista de alunos";
     private final alunoDAO dao = new alunoDAO();
-    private ArrayAdapter<Aluno> adapter;
+    private ListaAlunosAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,8 +41,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setTitle(TITULO_APPBAR);
         configuraFabNovoAluno();
         configuraLista();
-//            dao.salva(new Aluno("Daniel", "1234556789", "dan@gmail.com"));
-//            dao.salva(new Aluno("Vitor", "987654321", "vitin@gmail.com"));
+           dao.salva(new Aluno("Daniel", "1234556789", "dan@gmail.com"));
+           dao.salva(new Aluno("Vitor", "987654321", "vitin@gmail.com"));
     }
 
     private void configuraFabNovoAluno() {
@@ -94,9 +101,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configuraAdapter(ListView listaDeAlunos) {
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1);
+        adapter = new ListaAlunosAdapter(this);
         listaDeAlunos.setAdapter(adapter);
     }
 
