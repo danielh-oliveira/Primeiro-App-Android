@@ -1,16 +1,25 @@
 # Primeiro-App-Android
 
-Criei meu primeiro App android nativo usando Android Studio e Java.
+Criei **meu primeiro app android nativo** usando Android Studio e Java.
 
 ## 📲 Demonstração
 
 O aplicativo permite o cadastro de novos alunos. Após o cadastro ser feito a lista é atualizada mostrando todos os alunos cadastrados.
 
-![Cadastro Aluno](https://media.giphy.com/media/pXfRPFNM8UOFKF8F9g/giphy.gif)
+
+![Formulario cadastro aluno](https://media.giphy.com/media/7N9sKNXESALacOAZQY/giphy.gif)
 
 Também fiz com que o aplicativo previna o cadastro de alunos sem nome ou com apenas espaço.
 
-![Cadastro Aluno](https://media.giphy.com/media/2btP8xhpOuu5wH6C8R/giphy.gif)
+![Formulario cadastro aluno sem nome](https://media.giphy.com/media/Tq0yb8NJxsm4wggER0/giphy.gif)
+
+Adicionei a edição das informações do aluno:
+
+![Formulario edição aluno](https://media.giphy.com/media/9eJE625qUurolAV9Wz/giphy.gif)
+
+É possivel deletar o aluno segurando e selecionando deletar no menu de contexto:
+
+![Lista aluno deletar](https://media.giphy.com/media/8mWCfoTcFmYbcdm6SE/giphy.gif)
 
 ## Instalação
 

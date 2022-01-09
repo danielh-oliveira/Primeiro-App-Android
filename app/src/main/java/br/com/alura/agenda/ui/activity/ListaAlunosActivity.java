@@ -4,9 +4,7 @@ import static br.com.alura.agenda.ui.activity.ConstantActivities.CHAVE_ALUNO;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,8 +34,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setTitle(TITULO_APPBAR);
         configuraFabNovoAluno();
         configuraLista();
-            dao.salva(new Aluno("Daniel", "1234556789", "dan@gmail.com"));
-            dao.salva(new Aluno("Vitor", "987654321", "vitin@gmail.com"));
+//            dao.salva(new Aluno("Daniel", "1234556789", "dan@gmail.com"));
+//            dao.salva(new Aluno("Vitor", "987654321", "vitin@gmail.com"));
     }
 
     private void configuraFabNovoAluno() {
