@@ -13,8 +13,8 @@ public class AgendaApplication extends Application {
     }
 
     private void criaAlunosDeTeste() {
-        AlunoDAO dao = new AlunoDAO();
-        dao.salva(new Aluno("Daniel", "1234556789", "dan@gmail.com"));
-        dao.salva(new Aluno("Vitor", "987654321", "vitin@gmail.com"));
+//        AlunoDAO dao = new AlunoDAO();
+//        dao.salva(new Aluno("Daniel", "1234556789", "dan@gmail.com"));
+//        dao.salva(new Aluno("Vitor", "987654321", "vitin@gmail.com"));
     }
 }
