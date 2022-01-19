@@ -23,7 +23,7 @@ Adicionei a edição das informações do aluno:
 
 Novo layout item aluno:
 
-![Novo layout item aluno](telaapp.png)
+![Novo layout item aluno](/telaapp.PNG)
 
 
 ## Instalação
