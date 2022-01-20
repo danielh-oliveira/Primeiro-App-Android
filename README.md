@@ -23,8 +23,7 @@ Adicionei a edição das informações do aluno:
 
 Novo layout item aluno:
 
-![Novo layout item aluno](/telaapp.PNG)
-
+<img src="telaapp.PNG" alt="Novo layout item aluno" width="28%"/>
 
 ## Instalação
 
