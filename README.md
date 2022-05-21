@@ -25,16 +25,11 @@ Novo layout item aluno:
 
 <img src="telaapp.PNG" alt="Novo layout item aluno" width="28%"/>
 
+## 🆕 Atualização
+
+Agora o aplicativo tem persistência de dados, criei um banco de dados utilizando a biblioteca Room.
+Dessa forma os dados não são perdidos caso o app seja finalizado ou desligue o celular!
+
 ## Instalação
 
-Crie um projeto no Android Studio 2020.3.1, escolha nenhuma atividade. Por último sobrescreva os diretórios com os arquivos que estão aqui.
-
-
-#### AS 
-Android Studio Arctic Fox | 2020.3.1 Patch 4
-
-Build #AI-203.7717.56.2031.7935034, built on November 21, 2021
-
-Runtime version: 11.0.10+0-b96-7249189 amd64
-
-VM: OpenJDK 64-Bit Server VM by Oracle Corporation
+Baixe o Android Studio e clone esse projeto utilizando essa [URL](https://github.com/danielh-oliveira/Primeiro-App-Android.git)
