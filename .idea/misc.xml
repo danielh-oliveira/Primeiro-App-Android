@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Daniel/dio/Primeiro-App-Android/app/src/main/res/layout/activity_formulario_aluno.xml" value="0.17831813576494426" />
+        <entry key="..\:/Daniel/dio/Primeiro-App-Android/app/src/main/res/layout/activity_lista_alunos.xml" value="0.3423913043478261" />
+        <entry key="..\:/Daniel/dio/Primeiro-App-Android/app/src/main/res/menu/activity_formulario_aluno_menu_salvar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/FOlive/AndroidStudioProjects/Agenda/app/src/main/res/layout-v21/activity_lista_alunos.xml" value="0.1" />
         <entry key="..\:/Users/FOlive/AndroidStudioProjects/Agenda/app/src/main/res/layout/activity_formulario_aluno.xml" value="0.30570652173913043" />
         <entry key="..\:/Users/FOlive/AndroidStudioProjects/Agenda/app/src/main/res/layout/activity_lista_alunos.xml" value="0.23007246376811594" />

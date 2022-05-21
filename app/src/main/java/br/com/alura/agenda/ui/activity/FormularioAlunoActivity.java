@@ -1,8 +1,7 @@
 package br.com.alura.agenda.ui.activity;
 
-import static br.com.alura.agenda.ui.activity.ConstantActivities.CHAVE_ALUNO;
+import static br.com.alura.agenda.ui.activity.ConstantActivities.CHAVE_ALUNO_ID;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.alura.agenda.R;
-import br.com.alura.agenda.dao.AlunoDAO;
+import br.com.alura.agenda.dao.AlunoDAOroom;
+import br.com.alura.agenda.data.AppDatabase;
 import br.com.alura.agenda.databinding.ActivityFormularioAlunoBinding;
 import br.com.alura.agenda.model.Aluno;
 
@@ -25,7 +25,6 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText campoNome;
     private EditText campoTelefone;
     private EditText campoEmail;
-    private final AlunoDAO dao = new AlunoDAO();
     private Aluno aluno;
     private ActivityFormularioAlunoBinding binding;
 
@@ -71,11 +70,8 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     private void finalizaFormulario() {
         preencheAluno();
-        if (aluno.temIdValido()) {
-            dao.edita(aluno);
-        } else {
-            dao.salva(aluno);
-        }
+        AlunoDAOroom alunoDAO = AppDatabase.getInstance(this.getApplicationContext()).alunoDAO();
+        alunoDAO.salva(aluno);
         finish();
     }
 
@@ -90,10 +86,11 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     }
 
     private void carregaAluno() {
-        Intent dados = getIntent();
-        if (dados.hasExtra(CHAVE_ALUNO)) {
+        int idAluno = getIntent().getIntExtra(CHAVE_ALUNO_ID, 0);
+        if (idAluno != 0) {
             setTitle(TITULO_APPBAR_EDITA_ALUNO);
-            aluno = (Aluno) dados.getSerializableExtra(CHAVE_ALUNO);
+            AlunoDAOroom alunoDAO = AppDatabase.getInstance(this.getApplicationContext()).alunoDAO();
+            aluno = alunoDAO.buscaPorId(idAluno);
             campoNome.setText(aluno.getNome());
             campoTelefone.setText(aluno.getTelefone());
             campoEmail.setText(aluno.getEmail());

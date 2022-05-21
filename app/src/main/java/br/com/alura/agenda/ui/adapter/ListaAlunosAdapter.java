@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.alura.agenda.R;
+import br.com.alura.agenda.data.AppDatabase;
 import br.com.alura.agenda.model.Aluno;
 
 public class ListaAlunosAdapter extends BaseAdapter {
@@ -61,6 +62,7 @@ public class ListaAlunosAdapter extends BaseAdapter {
     }
 
     public void remove(Aluno aluno) {
+        AppDatabase.getInstance(context).alunoDAO().remove(aluno);
         alunos.remove(aluno);
         notifyDataSetChanged();
     }

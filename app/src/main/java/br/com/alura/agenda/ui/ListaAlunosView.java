@@ -8,21 +8,21 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
-import br.com.alura.agenda.dao.AlunoDAO;
+import java.util.List;
+
 import br.com.alura.agenda.model.Aluno;
 import br.com.alura.agenda.ui.adapter.ListaAlunosAdapter;
 
 public class ListaAlunosView {
 
     private final ListaAlunosAdapter adapter;
-    private final AlunoDAO dao;
     private final Context context;
 
     public ListaAlunosView(Context context) {
         this.context = context;
         this.adapter = new ListaAlunosAdapter(this.context);
-        this.dao = new AlunoDAO();
     }
+
 
     public void confirmaRemocao(@NonNull final MenuItem item) {
         new AlertDialog.Builder(context)
@@ -38,12 +38,11 @@ public class ListaAlunosView {
                 .show();
     }
 
-    public void atualizaAlunos() {
-        adapter.atualiza(dao.todos());
+    public void atualizaAlunos(List<Aluno> todos) {
+        adapter.atualiza(todos);
     }
 
     private void remove(Aluno aluno) {
-        dao.remove(aluno);
         adapter.remove(aluno);
     }
 

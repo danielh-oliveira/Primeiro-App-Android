@@ -1,11 +1,10 @@
 package br.com.alura.agenda.ui.activity;
 
-import static br.com.alura.agenda.ui.activity.ConstantActivities.CHAVE_ALUNO;
+import static br.com.alura.agenda.ui.activity.ConstantActivities.CHAVE_ALUNO_ID;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -17,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import br.com.alura.agenda.R;
+import br.com.alura.agenda.dao.AlunoDAOroom;
+import br.com.alura.agenda.data.AppDatabase;
 import br.com.alura.agenda.databinding.ActivityListaAlunosBinding;
 import br.com.alura.agenda.model.Aluno;
 import br.com.alura.agenda.ui.ListaAlunosView;
@@ -24,7 +25,7 @@ import br.com.alura.agenda.ui.ListaAlunosView;
 public class ListaAlunosActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Lista de alunos";
-    private final ListaAlunosView listaAlunosView= new ListaAlunosView(this);
+    private final ListaAlunosView listaAlunosView = new ListaAlunosView(this);
     private ActivityListaAlunosBinding binding;
 
     @Override
@@ -65,11 +66,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        listaAlunosView.atualizaAlunos();
+        AlunoDAOroom alunoDAO = AppDatabase.getInstance(this.getApplicationContext()).alunoDAO();
+        listaAlunosView.atualizaAlunos(alunoDAO.todos());
     }
 
     private void configuraLista() {
-        ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
+        ListView listaDeAlunos = binding.activityListaAlunosListview;
         listaAlunosView.configuraAdapter(listaDeAlunos);
         configuraListenerCliquePorItem(listaDeAlunos);
         registerForContextMenu(listaDeAlunos);
@@ -86,7 +88,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void abreFormularioModoEditaAluno(Aluno alunoEscolhido) {
         Intent vaiParaFormularioActivity = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
-        vaiParaFormularioActivity.putExtra(CHAVE_ALUNO, alunoEscolhido);
+        vaiParaFormularioActivity.putExtra(CHAVE_ALUNO_ID, alunoEscolhido.getId());
         startActivity(vaiParaFormularioActivity);
     }
 

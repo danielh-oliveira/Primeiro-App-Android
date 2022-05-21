@@ -1,13 +1,21 @@
 package br.com.alura.agenda.model;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+@Entity
 public class Aluno implements Serializable {
+    @PrimaryKey(autoGenerate = true)
     private int id = 0;
+    @ColumnInfo
     private String nome;
+    @ColumnInfo
     private String telefone;
+    @ColumnInfo
     private String email;
 
     public Aluno(String nome, String telefone, String email) {
