@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.alura.agenda.R;
 import br.com.alura.agenda.dao.AlunoDAO;
+import br.com.alura.agenda.databinding.ActivityFormularioAlunoBinding;
 import br.com.alura.agenda.model.Aluno;
 
 public class FormularioAlunoActivity extends AppCompatActivity {
@@ -26,11 +27,14 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText campoEmail;
     private final AlunoDAO dao = new AlunoDAO();
     private Aluno aluno;
+    private ActivityFormularioAlunoBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_formulario_aluno);
+        binding = ActivityFormularioAlunoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         inicializacaoDosCampos();
         carregaAluno();
     }
@@ -55,9 +59,9 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     }
 
     private void inicializacaoDosCampos() {
-        campoNome = findViewById(R.id.activity_formulario_aluno_nome);
-        campoTelefone = findViewById(R.id.activity_formulario_aluno_telefone);
-        campoEmail = findViewById(R.id.activity_formulario_aluno_email);
+        campoNome = binding.activityFormularioAlunoNome;
+        campoTelefone = binding.activityFormularioAlunoTelefone;
+        campoEmail = binding.activityFormularioAlunoEmail;
     }
 
     private boolean nomeVazio() {
